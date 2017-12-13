@@ -1,2 +1,9 @@
-<input #playerNameInput>
-<button (click)="joinGame">Join</button>
+<ng-template #notStarted>
+  <input [(ngModel)]="playerNameInput">
+  <button (click)="joinGame()">Join</button>
+  <button (click)="startGame()" *ngIf="playerName!=''">Start</button>
+</ng-template>
+<div *ngIf="gameStarted; else notStarted"> 
+  <p>The game has started!</p>
+  <p>You are a {{roleName}}. Shh!!</p>
+</div>
